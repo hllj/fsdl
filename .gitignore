@@ -1,2 +1,4 @@
 training/logs/
 __pycache__
+data/downloaded/*
+data/processed/*
