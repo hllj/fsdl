@@ -83,7 +83,7 @@ def main():
 
     early_stopping_callback = pl.callbacks.EarlyStopping(monitor="val_loss", mode="min", patience=10)
     model_checkpoint_callback = pl.callbacks.ModelCheckpoint(
-        filename="{epoch:03d}-{val_loss:.3f}-{val_cer:.3f}", monitor="val_loss", mode="min"
+        filename="best", monitor="val_loss", mode="min", save_last=True, save_top_k=1
     )
     callbacks = [early_stopping_callback, model_checkpoint_callback]
 

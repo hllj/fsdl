@@ -46,7 +46,10 @@ class EMNIST(BaseDataModule):
             essentials = json.load(f)
         self.mapping = list(essentials["characters"])
         self.inverse_mapping = {v: k for k, v in enumerate(self.mapping)}
-        self.transform = transforms.Compose([transforms.ToTensor()])
+        self.transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5), (0.5))
+        ])
         self.dims = (1, *essentials["input_shape"])  # Extra dimension is added by ToTensor()
         self.output_dims = (1,)
 
